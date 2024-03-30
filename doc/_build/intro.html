@@ -1,0 +1,270 @@
+
+
+<!doctype html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction &#8212; HME_DataAnalyzer_Yiwen &#34;1.0&#34; documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css?v=532c1bf3" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css?v=7f9a90b1" />
+    
+    <script src="_static/documentation_options.js?v=21637f4b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API" href="api.html" />
+    <link rel="prev" title="Welcome to HME_DataAnalyzer_Yiwen’s documentation!" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="api.html" title="API"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to HME_DataAnalyzer_Yiwen’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">HME_DataAnalyzer_Yiwen &#34;1.0&#34; documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Introduction</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h1>
+<section id="project-goals">
+<h2>Project goals<a class="headerlink" href="#project-goals" title="Link to this heading">¶</a></h2>
+<p>The main goals for this library are:</p>
+<ul class="simple">
+<li><p>to be faster than the other Python based mdf libraries</p></li>
+<li><p>to have clean and easy to understand code base</p></li>
+</ul>
+</section>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Link to this heading">¶</a></h2>
+<ul>
+<li><p>create new mdf files from scratch</p></li>
+<li><p>append new channels</p></li>
+<li><p>read unsorted MDF v3 and v4 files</p></li>
+<li><p>read CAN and LIN bus logging files</p></li>
+<li><p>extract CAN and LIN signals from anonymous bus logging measurements</p></li>
+<li><p>filter a subset of channels from original mdf file</p></li>
+<li><p>cut measurement to specified time interval</p></li>
+<li><p>convert to different mdf version</p></li>
+<li><p>export to pandas, HDF5, Matlab (v7.3), CSV and parquet</p></li>
+<li><p>merge multiple files sharing the same internal structure</p></li>
+<li><p>read and save mdf version 4.10 files containing zipped data blocks</p></li>
+<li><p>space optimizations for saved files (no duplicated blocks)</p></li>
+<li><p>split large data blocks (configurable size) for mdf version 4</p></li>
+<li><p>full support (read, append, save) for the following map types (multidimensional array channels):</p>
+<blockquote>
+<div><ul>
+<li><p>mdf version 3 channels with CDBLOCK</p></li>
+<li><p>mdf version 4 structure channel composition</p></li>
+<li><p>mdf version 4 channel arrays with CNTemplate storage and one of the array types:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>0 - array</p></li>
+<li><p>1 - scaling axis</p></li>
+<li><p>2 - look-up</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>add and extract attachments for mdf version 4</p></li>
+<li><p>handle large files (for example merging two files, each with 14000 channels and 5GB size, on a RaspberryPi)</p></li>
+<li><p>extract channel data, master channel and extra channel information as <em>Signal</em> objects for unified operations with v3 and v4 files</p></li>
+<li><p>time domain operation using the <em>Signal</em> class</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Pandas data frames are good if all the channels have the same time base</p></li>
+<li><p>a measurement will usually have channels from different sources at different rates</p></li>
+<li><p>the <em>Signal</em> class facilitates operations with such channels</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="major-features-not-implemented-yet">
+<h2>Major features not implemented (yet)<a class="headerlink" href="#major-features-not-implemented-yet" title="Link to this heading">¶</a></h2>
+<ul>
+<li><p>for version 3</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>functionality related to sample reduction block: the sample reduction blocks are simply ignored</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>for version 4</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>functionality related to sample reduction block: the sample reduction blocks are simply ignored</p></li>
+<li><p>handling of channel hierarchy: channel hierarchy is ignored</p></li>
+<li><p>full handling of bus logging measurements: currently only CAN and LIN bus logging are implemented with the
+ability to <em>get</em> signals defined in the attached CAN/LIN database (.arxml or .dbc). Signals can also
+be extracted from an anonymous bus logging measurement by providing a CAN or LIN database (.dbc or .arxml)</p></li>
+<li><p>handling of unfinished measurements (mdf 4): warnings are logged based on the unfinished status flags
+but no further steps are taken to sanitize the measurement</p></li>
+<li><p>full support for remaining mdf 4 channel arrays types</p></li>
+<li><p>xml schema for MDBLOCK: most metadata stored in the comment blocks will not be available</p></li>
+<li><p>full handling of event blocks: events are transferred to the new files (in case of calling methods
+that return new <em>MDF</em> objects) but no new events can be created</p></li>
+<li><p>channels with default X axis: the default X axis is ignored and the channel group’s master channel
+is used</p></li>
+<li><p>attachment encryption/decryption using user provided encryption/decryption functions; this is not
+part of the MDF v4 spec and is only supported by this library</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading">¶</a></h2>
+<p>HME_DataAnalyzer_Yiwen uses the following libraries</p>
+<ul class="simple">
+<li><p>numpy : the heart that makes all tick</p></li>
+<li><p>numexpr : for algebraic and rational channel conversions</p></li>
+<li><p>wheel : for installation in virtual environments</p></li>
+<li><p>pandas : for DataFrame export</p></li>
+<li><p>canmatrix : to handle CAN/LIN bus logging measurements</p></li>
+<li><p>natsort</p></li>
+<li><p>lxml : for canmatrix arxml support</p></li>
+<li><p>lz4 : to speed up the disk IO performance</p></li>
+<li><p>python-dateutil : measurement start time handling</p></li>
+</ul>
+<p>optional dependencies needed for exports</p>
+<ul class="simple">
+<li><p>h5py : for HDF5 export</p></li>
+<li><p>hdf5storage : for Matlab v7.3 .mat export</p></li>
+<li><p>fastparquet : for parquet export</p></li>
+<li><p>scipy: for Matlab v4 and v5 .mat export</p></li>
+</ul>
+<p>other optional dependencies</p>
+<ul class="simple">
+<li><p>PySide6 : for GUI tool</p></li>
+<li><p>pyqtgraph : for GUI tool and Signal plotting (preferably the latest develop branch code)</p></li>
+<li><p>matplotlib : as fallback for Signal plotting</p></li>
+<li><p>faust-cchardet : to detect non-standard Unicode encodings</p></li>
+<li><p>chardet : to detect non-standard Unicode encodings</p></li>
+<li><p>pyqtlet2 : for the GPS window</p></li>
+<li><p>isal : for faster zlib compression/decompression</p></li>
+<li><p>fsspec : access files stored in the cloud</p></li>
+</ul>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h2>
+<p><em>HME_DataAnalyzer_Yiwen</em> is available on HME Tornado Measurement DB</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>\10.230.69.22Tornado Measurement DB12_DIAdem view Template01_ScriptHME_DataAnalyzer_Yiwen</p></li>
+</ul>
+</div></blockquote>
+<p>In case a wheel is not present for you OS/Python versions and you
+lack the proper compiler setup to compile the c-extension code, then
+you can simply copy-paste the package code to your site-packages. In this
+way the python fallback code will be used instead of the compiled c-extension code.</p>
+</section>
+<section id="contributing-support">
+<h2>Contributing &amp; Support<a class="headerlink" href="#contributing-support" title="Link to this heading">¶</a></h2>
+<p>If you enjoy this library please consider making a donation to the
+<a class="reference external" href="https://numfocus.org/donate-to-numpy">numpy project</a> or to <a class="reference external" href="https://liberapay.com/danielhrisca/donate">danielhrisca using liberapay</a></p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/favicon.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Introduction</a><ul>
+<li><a class="reference internal" href="#project-goals">Project goals</a></li>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#major-features-not-implemented-yet">Major features not implemented (yet)</a></li>
+<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#contributing-support">Contributing &amp; Support</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">Welcome to HME_DataAnalyzer_Yiwen’s documentation!</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="api.html"
+                          title="next chapter">API</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/intro.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="api.html" title="API"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to HME_DataAnalyzer_Yiwen’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">HME_DataAnalyzer_Yiwen &#34;1.0&#34; documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Introduction</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024, Yiwen Sun.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

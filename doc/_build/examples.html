@@ -1,0 +1,617 @@
+
+
+<!doctype html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Examples &#8212; HME_DataAnalyzer_Yiwen &#34;1.0&#34; documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css?v=532c1bf3" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css?v=7f9a90b1" />
+    
+    <script src="_static/documentation_options.js?v=21637f4b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Benchmarks" href="benchmarks.html" />
+    <link rel="prev" title="Tips" href="tips.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="benchmarks.html" title="Benchmarks"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tips.html" title="Tips"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">HME_DataAnalyzer_Yiwen &#34;1.0&#34; documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Examples</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <style> .red {color:red} </style>
+<style> .blue {color:blue} </style>
+<style> .green {color:green} </style>
+<style> .cyan {color:cyan} </style>
+<style> .magenta {color:magenta} </style>
+<style> .orange {color:orange} </style>
+<style> .brown {color:brown} </style><section id="examples">
+<span id="id1"></span><h1>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h1>
+<section id="working-with-mdf">
+<h2>Working with MDF<a class="headerlink" href="#working-with-mdf" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">asammdf</span> <span class="kn">import</span> <span class="n">MDF</span><span class="p">,</span> <span class="n">Signal</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<span class="c1"># create 3 Signal objects</span>
+
+<span class="n">timestamps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># unit8</span>
+<span class="n">s_uint8</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="n">samples</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">),</span>
+                 <span class="n">timestamps</span><span class="o">=</span><span class="n">timestamps</span><span class="p">,</span>
+                 <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Uint8_Signal&#39;</span><span class="p">,</span>
+                 <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;u1&#39;</span><span class="p">)</span>
+<span class="c1"># int32</span>
+<span class="n">s_int32</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="n">samples</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">),</span>
+                 <span class="n">timestamps</span><span class="o">=</span><span class="n">timestamps</span><span class="p">,</span>
+                 <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Int32_Signal&#39;</span><span class="p">,</span>
+                 <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;i4&#39;</span><span class="p">)</span>
+
+<span class="c1"># float64</span>
+<span class="n">s_float64</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="n">samples</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+                   <span class="n">timestamps</span><span class="o">=</span><span class="n">timestamps</span><span class="p">,</span>
+                   <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Float64_Signal&#39;</span><span class="p">,</span>
+                   <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;f8&#39;</span><span class="p">)</span>
+
+<span class="c1"># create empty MDf version 4.00 file</span>
+<span class="k">with</span> <span class="n">MDF</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;4.10&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">mdf4</span><span class="p">:</span>
+
+    <span class="c1"># append the 3 signals to the new file</span>
+    <span class="n">signals</span> <span class="o">=</span> <span class="p">[</span><span class="n">s_uint8</span><span class="p">,</span> <span class="n">s_int32</span><span class="p">,</span> <span class="n">s_float64</span><span class="p">]</span>
+    <span class="n">mdf4</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">signals</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;Created by Python&#39;</span><span class="p">)</span>
+
+    <span class="c1"># save new file</span>
+    <span class="n">mdf4</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;my_new_file.mf4&#39;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># convert new file to mdf version 3.10</span>
+    <span class="n">mdf3</span> <span class="o">=</span> <span class="n">mdf4</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;3.10&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">mdf3</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+
+    <span class="c1"># get the float signal</span>
+    <span class="n">sig</span> <span class="o">=</span> <span class="n">mdf3</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Float64_Signal&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+
+    <span class="c1"># cut measurement from 0.3s to end of measurement</span>
+    <span class="n">mdf4_cut</span> <span class="o">=</span> <span class="n">mdf4</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">mdf4_cut</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Float64_Signal&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+    <span class="c1"># cut measurement from start of measurement to 0.4s</span>
+    <span class="n">mdf4_cut</span> <span class="o">=</span> <span class="n">mdf4</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">stop</span><span class="o">=</span><span class="mf">0.45</span><span class="p">)</span>
+    <span class="n">mdf4_cut</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Float64_Signal&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+    <span class="c1"># filter some signals from the file</span>
+    <span class="n">mdf4</span> <span class="o">=</span> <span class="n">mdf4</span><span class="o">.</span><span class="n">filter</span><span class="p">([</span><span class="s1">&#39;Int32_Signal&#39;</span><span class="p">,</span> <span class="s1">&#39;Uint8_Signal&#39;</span><span class="p">])</span>
+
+    <span class="c1"># save using zipped transpose deflate blocks</span>
+    <span class="n">mdf4</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;out.mf4&#39;</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="working-with-signal">
+<h2>Working with Signal<a class="headerlink" href="#working-with-signal" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">asammdf</span> <span class="kn">import</span> <span class="n">Signal</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<span class="c1"># create 3 Signal objects with different time stamps</span>
+
+<span class="c1"># unit8 with 100ms time raster</span>
+<span class="n">timestamps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">s_uint8</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="n">samples</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">),</span>
+                 <span class="n">timestamps</span><span class="o">=</span><span class="n">timestamps</span><span class="p">,</span>
+                 <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Uint8_Signal&#39;</span><span class="p">,</span>
+                 <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;u1&#39;</span><span class="p">)</span>
+
+<span class="c1"># int32 with 50ms time raster</span>
+<span class="n">timestamps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.05</span> <span class="o">*</span> <span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">s_int32</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="n">samples</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">100</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">),</span>
+                 <span class="n">timestamps</span><span class="o">=</span><span class="n">timestamps</span><span class="p">,</span>
+                 <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Int32_Signal&#39;</span><span class="p">,</span>
+                 <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;i4&#39;</span><span class="p">)</span>
+
+<span class="c1"># float64 with 300ms time raster</span>
+<span class="n">timestamps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.3</span> <span class="o">*</span> <span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">s_float64</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="n">samples</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="o">-</span><span class="mi">1000</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">),</span>
+                   <span class="n">timestamps</span><span class="o">=</span><span class="n">timestamps</span><span class="p">,</span>
+                   <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Float64_Signal&#39;</span><span class="p">,</span>
+                   <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;f8&#39;</span><span class="p">)</span>
+
+<span class="c1"># map signals</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
+<span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">180.</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">vals</span><span class="p">),</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">vals</span><span class="p">):</span>
+    <span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*=</span> <span class="n">val</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">X</span> <span class="o">+</span> <span class="n">phi</span><span class="p">)</span> <span class="o">*</span> <span class="n">R</span>
+
+<span class="n">timestamps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">)</span>
+
+<span class="n">s_map</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="n">samples</span><span class="o">=</span><span class="n">samples</span><span class="p">,</span>
+               <span class="n">timestamps</span><span class="o">=</span><span class="n">timestamps</span><span class="p">,</span>
+               <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Variable Map Signal&#39;</span><span class="p">,</span>
+               <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;dB&#39;</span><span class="p">)</span>
+<span class="n">s_map</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+
+<span class="n">prod</span> <span class="o">=</span> <span class="n">s_float64</span> <span class="o">*</span> <span class="n">s_uint8</span>
+<span class="n">prod</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Uint8_Signal * Float64_Signal&#39;</span>
+<span class="n">prod</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="s1">&#39;*&#39;</span>
+<span class="n">prod</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="n">pow2</span> <span class="o">=</span> <span class="n">s_uint8</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">pow2</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Uint8_Signal ^ 2&#39;</span>
+<span class="n">pow2</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="s1">&#39;u1^2&#39;</span>
+<span class="n">pow2</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="n">allsum</span> <span class="o">=</span> <span class="n">s_uint8</span> <span class="o">+</span> <span class="n">s_int32</span> <span class="o">+</span> <span class="n">s_float64</span>
+<span class="n">allsum</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Uint8_Signal + Int32_Signal + Float64_Signal&#39;</span>
+<span class="n">allsum</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="s1">&#39;+&#39;</span>
+<span class="n">allsum</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="c1"># inplace operations</span>
+<span class="n">pow2</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">pow2</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;- Uint8_Signal ^ 2&#39;</span>
+<span class="n">pow2</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="c1"># cut signal</span>
+<span class="n">s_int32</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">cut_signal</span> <span class="o">=</span> <span class="n">s_int32</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mf">0.35</span><span class="p">)</span>
+<span class="n">cut_signal</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="mf4-demo-file-generator">
+<h2>MF4 demo file generator<a class="headerlink" href="#mf4-demo-file-generator" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">asammdf</span> <span class="kn">import</span> <span class="n">MDF</span><span class="p">,</span> <span class="n">SUPPORTED_VERSIONS</span><span class="p">,</span> <span class="n">Signal</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">cycles</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">sigs</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">mdf</span> <span class="o">=</span> <span class="n">MDF</span><span class="p">()</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+
+<span class="c1"># no conversion</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint64</span><span class="p">),</span>
+    <span class="n">t</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Channel_no_conversion&#39;</span><span class="p">,</span>
+    <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span>
+    <span class="n">conversion</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;Unsigned 64 bit channel </span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sigs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+
+<span class="c1"># linear</span>
+<span class="n">conversion</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span>
+    <span class="n">t</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Channel_linear_conversion&#39;</span><span class="p">,</span>
+    <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;Nm&#39;</span><span class="p">,</span>
+    <span class="n">conversion</span><span class="o">=</span><span class="n">conversion</span><span class="p">,</span>
+    <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;Signed 64bit channel with linear conversion&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sigs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+
+
+<span class="c1"># algebraic</span>
+<span class="n">conversion</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;formula&#39;</span><span class="p">:</span> <span class="s1">&#39;2 * sin(X)&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span> <span class="o">/</span> <span class="mf">100.0</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Channel_algebraic&#39;</span><span class="p">,</span>
+    <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;eV&#39;</span><span class="p">,</span>
+    <span class="n">conversion</span><span class="o">=</span><span class="n">conversion</span><span class="p">,</span>
+    <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;Sinus channel with algebraic conversion&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sigs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+
+<span class="c1"># rational</span>
+<span class="n">conversion</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;P1&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">&#39;P2&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s1">&#39;P3&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="s1">&#39;P4&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">&#39;P5&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">&#39;P6&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span>
+    <span class="n">t</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Channel_rational_conversion&#39;</span><span class="p">,</span>
+    <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;Nm&#39;</span><span class="p">,</span>
+    <span class="n">conversion</span><span class="o">=</span><span class="n">conversion</span><span class="p">,</span>
+    <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;Channel with rational conversion&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sigs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+
+<span class="c1"># string channel</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;String channel sample </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cycles</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sig</span><span class="p">),</span>
+    <span class="n">t</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Channel_string&#39;</span><span class="p">,</span>
+    <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;String channel&#39;</span><span class="p">,</span>
+    <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sigs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+
+<span class="c1"># byte array</span>
+<span class="n">ones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;(8,)u1&#39;</span><span class="p">))</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span>
+    <span class="n">ones</span><span class="o">*</span><span class="mi">111</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Channel_bytearay&#39;</span><span class="p">,</span>
+    <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;Byte array channel&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sigs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+
+<span class="c1"># tabular</span>
+<span class="n">vals</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">conversion</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;raw_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="n">i</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">conversion</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;phys_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="o">-</span><span class="n">i</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint32</span><span class="p">)</span> <span class="o">%</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Channel_tabular&#39;</span><span class="p">,</span>
+    <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span>
+    <span class="n">conversion</span><span class="o">=</span><span class="n">conversion</span><span class="p">,</span>
+    <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;Tabular channel&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sigs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+
+<span class="c1"># value to text</span>
+<span class="n">vals</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">conversion</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;val_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="n">i</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">conversion</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;text_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="s1">&#39;key_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">conversion</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;default key&#39;</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint32</span><span class="p">)</span> <span class="o">%</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Channel_value_to_text&#39;</span><span class="p">,</span>
+    <span class="n">conversion</span><span class="o">=</span><span class="n">conversion</span><span class="p">,</span>
+    <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;Value to text channel&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sigs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+
+<span class="c1"># tabular with range</span>
+<span class="n">vals</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">conversion</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;lower_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">10</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">conversion</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;upper_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">conversion</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;phys_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="n">i</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">conversion</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span>
+    <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+    <span class="n">t</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Channel_value_range_to_value&#39;</span><span class="p">,</span>
+    <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;order&#39;</span><span class="p">,</span>
+    <span class="n">conversion</span><span class="o">=</span><span class="n">conversion</span><span class="p">,</span>
+    <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;Value range to value channel&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sigs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+
+<span class="c1"># value range to text</span>
+<span class="n">vals</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">conversion</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;lower_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">10</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">conversion</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;upper_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">conversion</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;text_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="s1">&#39;Level </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">conversion</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;Unknown level&#39;</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span>
+    <span class="mi">6</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint64</span><span class="p">)</span> <span class="o">%</span> <span class="mi">240</span><span class="p">,</span>
+    <span class="n">t</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Channel_value_range_to_text&#39;</span><span class="p">,</span>
+    <span class="n">conversion</span><span class="o">=</span><span class="n">conversion</span><span class="p">,</span>
+    <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;Value range to text channel&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sigs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+
+
+<span class="n">mdf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sigs</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;single dimensional channels&#39;</span><span class="p">,</span> <span class="n">common_timebase</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+
+<span class="n">sigs</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># lookup tabel with axis</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">cycles</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint64</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">cycles</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint64</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">cycles</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint64</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">types</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;Channel_lookup_with_axis&#39;</span><span class="p">,</span> <span class="s1">&#39;(2, 3)&lt;u8&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;channel_axis_1&#39;</span><span class="p">,</span> <span class="s1">&#39;(2, )&lt;u8&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;channel_axis_2&#39;</span><span class="p">,</span> <span class="s1">&#39;(3, )&lt;u8&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">sig</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">records</span><span class="o">.</span><span class="n">fromarrays</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">types</span><span class="p">)),</span>
+    <span class="n">t</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Channel_lookup_with_axis&#39;</span><span class="p">,</span>
+    <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span>
+    <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;Array channel with axis&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sigs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+
+<span class="c1"># lookup tabel with default axis</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">cycles</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint64</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">types</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;Channel_lookup_with_default_axis&#39;</span><span class="p">,</span> <span class="s1">&#39;(2, 3)&lt;u8&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">sig</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">records</span><span class="o">.</span><span class="n">fromarrays</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">types</span><span class="p">)),</span>
+    <span class="n">t</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Channel_lookup_with_default_axis&#39;</span><span class="p">,</span>
+    <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;mA&#39;</span><span class="p">,</span>
+    <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;Array channel with default axis&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sigs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+
+<span class="c1"># structure channel composition</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span> <span class="o">*</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint64</span><span class="p">)</span> <span class="o">*</span> <span class="mi">40</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span> <span class="o">*</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span> <span class="o">*</span> <span class="o">-</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span> <span class="o">*</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span> <span class="o">*</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">types</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;struct_channel_0&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;struct_channel_1&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;struct_channel_2&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">uint32</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;struct_channel_3&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">uint64</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;struct_channel_4&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;struct_channel_5&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;struct_channel_6&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;struct_channel_7&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">sig</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">records</span><span class="o">.</span><span class="n">fromarrays</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">types</span><span class="p">)),</span>
+    <span class="n">t</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Channel_structure_composition&#39;</span><span class="p">,</span>
+    <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;Structure channel composition&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sigs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+
+
+<span class="c1"># nested structures</span>
+<span class="n">l4_arr</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">*</span> <span class="mi">41</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">*</span> <span class="mi">42</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">*</span> <span class="mi">43</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">cycles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">*</span> <span class="mi">44</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">types</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;level41&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;level42&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;level43&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;level44&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">l4_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">records</span><span class="o">.</span><span class="n">fromarrays</span><span class="p">(</span><span class="n">l4_arr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">types</span><span class="p">)</span>
+
+<span class="n">l3_arr</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">l4_arr</span><span class="p">,</span>
+    <span class="n">l4_arr</span><span class="p">,</span>
+    <span class="n">l4_arr</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">types</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;level31&#39;</span><span class="p">,</span> <span class="n">l4_arr</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;level32&#39;</span><span class="p">,</span> <span class="n">l4_arr</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;level33&#39;</span><span class="p">,</span> <span class="n">l4_arr</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">l3_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">records</span><span class="o">.</span><span class="n">fromarrays</span><span class="p">(</span><span class="n">l3_arr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">types</span><span class="p">)</span>
+
+
+<span class="n">l2_arr</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">l3_arr</span><span class="p">,</span>
+    <span class="n">l3_arr</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">types</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;level21&#39;</span><span class="p">,</span> <span class="n">l3_arr</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;level22&#39;</span><span class="p">,</span> <span class="n">l3_arr</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">l2_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">records</span><span class="o">.</span><span class="n">fromarrays</span><span class="p">(</span><span class="n">l2_arr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">types</span><span class="p">)</span>
+
+
+<span class="n">l1_arr</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">l2_arr</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">types</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;level11&#39;</span><span class="p">,</span> <span class="n">l2_arr</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">l1_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">records</span><span class="o">.</span><span class="n">fromarrays</span><span class="p">(</span><span class="n">l1_arr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">types</span><span class="p">)</span>
+
+
+<span class="n">sigs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+    <span class="n">Signal</span><span class="p">(</span>
+        <span class="n">l1_arr</span><span class="p">,</span>
+        <span class="n">t</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Nested_structures&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">mdf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sigs</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;arrays&#39;</span><span class="p">,</span> <span class="n">common_timebase</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">mdf</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;demo.mf4&#39;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/favicon.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Examples</a><ul>
+<li><a class="reference internal" href="#working-with-mdf">Working with MDF</a></li>
+<li><a class="reference internal" href="#working-with-signal">Working with Signal</a></li>
+<li><a class="reference internal" href="#mf4-demo-file-generator">MF4 demo file generator</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="tips.html"
+                          title="previous chapter">Tips</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="benchmarks.html"
+                          title="next chapter">Benchmarks</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/examples.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="benchmarks.html" title="Benchmarks"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tips.html" title="Tips"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">HME_DataAnalyzer_Yiwen &#34;1.0&#34; documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Examples</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024, Yiwen Sun.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>
