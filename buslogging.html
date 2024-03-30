@@ -1,0 +1,161 @@
+
+
+<!doctype html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Bus logging &#8212; HME_DataAnalyzer_Yiwen &#34;1.0&#34; documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css?v=532c1bf3" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css?v=7f9a90b1" />
+    
+    <script src="_static/documentation_options.js?v=21637f4b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tips" href="tips.html" />
+    <link rel="prev" title="AttachmentBlock Class" href="v4blocks.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tips.html" title="Tips"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="v4blocks.html" title="AttachmentBlock Class"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">HME_DataAnalyzer_Yiwen &#34;1.0&#34; documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Bus logging</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="bus-logging">
+<h1>Bus logging<a class="headerlink" href="#bus-logging" title="Link to this heading">¶</a></h1>
+<p>Initial read only mode for mdf version 4.10 files containing CAN/LIN bus logging
+is now implemented.</p>
+<p>To handle this, the <strong>canmatrix</strong> package was added to the dependencies; you will need to install the latest code
+from the <strong>canmatrix</strong> library.</p>
+<p>Let’s take for example the following situation: the .dbc contains the definition
+for the CAN message called “VehicleStatus” with <cite>ID=123</cite>. This message contains the
+signal “EngineStatus”. Logging was made from the CAN bus with <cite>ID=1</cite> (CAN1).</p>
+<p>There multiple ways to address this channel in this situation:</p>
+<ol class="arabic">
+<li><p>short signal name as found in the .dbc file</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mdf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;EngineStatus&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>dbc message name and short signal name, delimited by dot</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mdf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;VehicleStatus.EngineStatus&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>CAN bus ID, dbc message name and short signal name, delimited by dot</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mdf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;CAN1.VehicleStatus.EngineStatus&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>ASAM conformant message ID and short signal name, delimited by dot</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mdf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;CAN_DataFrame_123.EngineStatus&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>CAN bus ID, ASAM conformant message ID and short signal name, delimited by dot</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mdf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;CAN1.CAN_DataFrame_123.EngineStatus&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/favicon.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="v4blocks.html"
+                          title="previous chapter">AttachmentBlock Class</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="tips.html"
+                          title="next chapter">Tips</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/buslogging.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tips.html" title="Tips"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="v4blocks.html" title="AttachmentBlock Class"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">HME_DataAnalyzer_Yiwen &#34;1.0&#34; documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Bus logging</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024, Yiwen Sun.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

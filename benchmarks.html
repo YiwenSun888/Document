@@ -1,0 +1,429 @@
+
+
+<!doctype html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Benchmarks &#8212; HME_DataAnalyzer_Yiwen &#34;1.0&#34; documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css?v=532c1bf3" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css?v=7f9a90b1" />
+    
+    <script src="_static/documentation_options.js?v=21637f4b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="GUI" href="gui.html" />
+    <link rel="prev" title="Examples" href="examples.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="gui.html" title="GUI"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="examples.html" title="Examples"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">HME_DataAnalyzer_Yiwen &#34;1.0&#34; documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Benchmarks</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <style> .red {color:red} </style>
+<style> .blue {color:blue} </style>
+<style> .green {color:green} </style>
+<style> .cyan {color:cyan} </style>
+<style> .magenta {color:magenta} </style>
+<style> .orange {color:orange} </style>
+<style> .brown {color:brown} </style><section id="benchmarks">
+<h1>Benchmarks<a class="headerlink" href="#benchmarks" title="Link to this heading">¶</a></h1>
+<section id="test-setup">
+<h2>Test setup<a class="headerlink" href="#test-setup" title="Link to this heading">¶</a></h2>
+<p>The files contain 183 data groups and a total of 36424 channels.</p>
+<p><em>asamdf 7.0.1</em> was compared against <em>mdfreader 4.1</em>.</p>
+<p>For each category two aspect were noted: elapsed time and peak RAM usage.</p>
+<section id="dependencies">
+<h3>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading">¶</a></h3>
+<p>You will need the following packages to be able to run the benchmark script</p>
+<ul class="simple">
+<li><p>psutil</p></li>
+<li><p>mdfreader</p></li>
+</ul>
+</section>
+<section id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h3>
+<p>Extract the test files from the archive, or provide a folder that contains the files “test.mdf” and “test.mf4”.
+Run the module <em>bench.py</em> ( see –help option for available options )</p>
+</section>
+</section>
+<section id="x64-python-results">
+<h2>x64 Python results<a class="headerlink" href="#x64-python-results" title="Link to this heading">¶</a></h2>
+<p>Benchmark environment</p>
+<ul class="simple">
+<li><p>3.9.4 (tags/v3.9.4:1f2e308, Apr  6 2021, 13:40:21) [MSC v.1928 64 bit (AMD64)]</p></li>
+<li><p>Windows-10-10.0.19041-SP0</p></li>
+<li><p>Intel64 Family 6 Model 158 Stepping 10, GenuineIntel</p></li>
+<li><p>numpy 1.21.2</p></li>
+<li><p>16GB installed RAM</p></li>
+</ul>
+<p>Notations used in the results</p>
+<ul class="simple">
+<li><p>compress = mdfreader mdf object created with compression=blosc</p></li>
+<li><p>nodata = mdfreader mdf object read with no_data_loading=True</p></li>
+</ul>
+<p>Files used for benchmark:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>mdf version 3.10</dt><dd><ul>
+<li><p>167 MB file size</p></li>
+<li><p>183 groups</p></li>
+<li><p>36424 channels</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>mdf version 4.00</dt><dd><ul>
+<li><p>183 MB file size</p></li>
+<li><p>183 groups</p></li>
+<li><p>36424 channels</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Open file</p></th>
+<th class="head"><p>Time [ms]</p></th>
+<th class="head"><p>RAM [MB]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HME_DataAnalyzer_Yiwen 7.0.1 mdfv3</p></td>
+<td></td>
+<td><p>369      186</p></td>
+</tr>
+<tr class="row-odd"><td><p>mdfreader 4.1 mdfv3</p></td>
+<td><p>1741</p></td>
+<td><p>498</p></td>
+</tr>
+<tr class="row-even"><td><p>mdfreader 4.1 no_data_loading mdfv3</p></td>
+<td><p>646</p></td>
+<td><p>248</p></td>
+</tr>
+<tr class="row-odd"><td><p>mdfreader 4.1 compress mdfv3</p></td>
+<td><p>1463</p></td>
+<td><p>365</p></td>
+</tr>
+<tr class="row-even"><td><p>HME_DataAnalyzer_Yiwen 7.0.1 mdfv4</p></td>
+<td></td>
+<td><p>468      199</p></td>
+</tr>
+<tr class="row-odd"><td><p>mdfreader 4.1 mdfv4</p></td>
+<td><p>4350</p></td>
+<td><p>520</p></td>
+</tr>
+<tr class="row-even"><td><p>mdfreader 4.1 no_data_loading mdfv4</p></td>
+<td><p>2892</p></td>
+<td><p>310</p></td>
+</tr>
+<tr class="row-odd"><td><p>mdfreader 4.1 compress mdfv4</p></td>
+<td><p>4105</p></td>
+<td><p>391</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Save file</p></th>
+<th class="head"><p>Time [ms]</p></th>
+<th class="head"><p>RAM [MB]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HME_DataAnalyzer_Yiwen 7.0.1 mdfv3</p></td>
+<td></td>
+<td><p>378      186</p></td>
+</tr>
+<tr class="row-odd"><td><p>mdfreader 4.1 mdfv3</p></td>
+<td><p>4310</p></td>
+<td><p>527</p></td>
+</tr>
+<tr class="row-even"><td><p>mdfreader 4.1 no_data_loading mdfv3</p></td>
+<td><p>5070</p></td>
+<td><p>586</p></td>
+</tr>
+<tr class="row-odd"><td><p>mdfreader 4.1 compress mdfv3</p></td>
+<td><p>4456</p></td>
+<td><p>525</p></td>
+</tr>
+<tr class="row-even"><td><p>HME_DataAnalyzer_Yiwen 7.0.1 mdfv4</p></td>
+<td></td>
+<td><p>331      366</p></td>
+</tr>
+<tr class="row-odd"><td><p>mdfreader 4.1 mdfv4</p></td>
+<td><p>2254</p></td>
+<td><p>539</p></td>
+</tr>
+<tr class="row-even"><td><p>mdfreader 4.1 no_data_loading mdfv4</p></td>
+<td><p>3591</p></td>
+<td><p>618</p></td>
+</tr>
+<tr class="row-odd"><td><p>mdfreader 4.1 compress mdfv4</p></td>
+<td><p>2400</p></td>
+<td><p>535</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Get all channels (36424 calls)</p></th>
+<th class="head"><p>Time [ms]</p></th>
+<th class="head"><p>RAM [MB]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HME_DataAnalyzer_Yiwen 7.0.1 mdfv3</p></td>
+<td></td>
+<td><p>3354      187</p></td>
+</tr>
+<tr class="row-odd"><td><p>mdfreader 4.1 mdfv3</p></td>
+<td><p>40</p></td>
+<td><p>498</p></td>
+</tr>
+<tr class="row-even"><td><p>mdfreader 4.1 nodata mdfv3</p></td>
+<td><p>12686</p></td>
+<td><p>283</p></td>
+</tr>
+<tr class="row-odd"><td><p>mdfreader 4.1 compress mdfv3</p></td>
+<td><p>154</p></td>
+<td><p>366</p></td>
+</tr>
+<tr class="row-even"><td><p>HME_DataAnalyzer_Yiwen 7.0.1 mdfv4</p></td>
+<td></td>
+<td><p>5243      364</p></td>
+</tr>
+<tr class="row-odd"><td><p>mdfreader 4.1 mdfv4</p></td>
+<td><p>51</p></td>
+<td><p>520</p></td>
+</tr>
+<tr class="row-even"><td><p>mdfreader 4.1 nodata mdfv4</p></td>
+<td><p>20210</p></td>
+<td><p>336</p></td>
+</tr>
+<tr class="row-odd"><td><p>mdfreader 4.1 compress mdfv4</p></td>
+<td><p>170</p></td>
+<td><p>396</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Convert file</p></th>
+<th class="head"><p>Time [ms]</p></th>
+<th class="head"><p>RAM [MB]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HME_DataAnalyzer_Yiwen 7.0.1 v3 to v4</p></td>
+<td></td>
+<td><p>2186      232</p></td>
+</tr>
+<tr class="row-odd"><td><p>HME_DataAnalyzer_Yiwen 7.0.1 v4 to v410</p></td>
+<td></td>
+<td><p>2008      394</p></td>
+</tr>
+<tr class="row-even"><td><p>HME_DataAnalyzer_Yiwen 7.0.1 v4 to v420</p></td>
+<td></td>
+<td><p>2359      438</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Merge 3 files</p></th>
+<th class="head"><p>Time [ms]</p></th>
+<th class="head"><p>RAM [MB]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HME_DataAnalyzer_Yiwen 7.0.1 v3</p></td>
+<td></td>
+<td><p>6449      224</p></td>
+</tr>
+<tr class="row-odd"><td><p>mdfreader 4.1 v3</p></td>
+<td><p>0*</p></td>
+<td><p>0*</p></td>
+</tr>
+<tr class="row-even"><td><p>mdfreader 4.1 nodata v3</p></td>
+<td><p>0*</p></td>
+<td><p>0*</p></td>
+</tr>
+<tr class="row-odd"><td><p>mdfreader 4.1 compress v3</p></td>
+<td><p>0*</p></td>
+<td><p>0*</p></td>
+</tr>
+<tr class="row-even"><td><p>HME_DataAnalyzer_Yiwen 7.0.1 v4</p></td>
+<td></td>
+<td><p>6713      409</p></td>
+</tr>
+<tr class="row-odd"><td><p>mdfreader 4.1 v4</p></td>
+<td><p>34746</p></td>
+<td><p>1156</p></td>
+</tr>
+<tr class="row-even"><td><p>mdfreader 4.1 nodata v4</p></td>
+<td><p>37608</p></td>
+<td><p>1266</p></td>
+</tr>
+<tr class="row-odd"><td><p>mdfreader 4.1 compress v4</p></td>
+<td><p>34184</p></td>
+<td><p>1151</p></td>
+</tr>
+</tbody>
+</table>
+<section id="graphical-results">
+<h3>Graphical results<a class="headerlink" href="#graphical-results" title="Link to this heading">¶</a></h3>
+<p>(<a class="reference download internal" download="" href="_downloads/dffcd0be7b65c24166140a75895d0bd3/benchmarks-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="_downloads/543c64d98fc9cb661c528455b78eb0e0/benchmarks-1.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="_downloads/c83a58edaa333ef05028701017bdcc6e/benchmarks-1.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="_downloads/4f23e32ce2fa20b4197671a7927ce75d/benchmarks-1.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="_images/benchmarks-1.png" class="plot-directive" src="_images/benchmarks-1.png" />
+</figure>
+<p>(<a class="reference download internal" download="" href="_downloads/32c261c78b7830f251da38b335fdee64/benchmarks-2.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="_downloads/bb0988452078aa1d767cb02af5bb265e/benchmarks-2.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="_downloads/1dce034d1ccf111f84c00d3d80537d2a/benchmarks-2.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="_downloads/6e23e2e28dda563f3dee6ad69d43d263/benchmarks-2.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="_images/benchmarks-2.png" class="plot-directive" src="_images/benchmarks-2.png" />
+</figure>
+<p>(<a class="reference download internal" download="" href="_downloads/e88e3e5bee230ea0d9f9ca9f737926bb/benchmarks-3.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="_downloads/29ab1022e372ccec0f5c94753f638ff7/benchmarks-3.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="_downloads/3e2a15e3ec5b89f092d6bf2754039b62/benchmarks-3.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="_downloads/59625cda82a170a6d905832ba22775fd/benchmarks-3.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="_images/benchmarks-3.png" class="plot-directive" src="_images/benchmarks-3.png" />
+</figure>
+<p>(<a class="reference download internal" download="" href="_downloads/20b09124fe481b02c128c25f4163e952/benchmarks-4.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="_downloads/ef654b4690e9cb4a8cb87d20885c358e/benchmarks-4.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="_downloads/5576083e9885c82811572e3cff0d1d1e/benchmarks-4.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="_downloads/a66cea2caf7d32d17ea80d29d042aefd/benchmarks-4.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="_images/benchmarks-4.png" class="plot-directive" src="_images/benchmarks-4.png" />
+</figure>
+<p>(<a class="reference download internal" download="" href="_downloads/68362b7f5ed8e2109f419cf6eaabdf5d/benchmarks-5.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="_downloads/67ee0a7fe0dc2dba8381c037b3ec398c/benchmarks-5.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="_downloads/0da1717e1595fe9219eeeb1ef697435d/benchmarks-5.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="_downloads/f0d5284867eb8f545d14b04eeb20b269/benchmarks-5.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="_images/benchmarks-5.png" class="plot-directive" src="_images/benchmarks-5.png" />
+</figure>
+<p>(<a class="reference download internal" download="" href="_downloads/40ff6d7a1f6c08143e938312057d52c3/benchmarks-6.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="_downloads/22fc3bbd72d6abeccd9be36fc2e3ff7b/benchmarks-6.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="_downloads/2fdb235189c4c62c19376eb1952dc3a1/benchmarks-6.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="_downloads/205faeee821727a23a46c16912cfd59f/benchmarks-6.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="_images/benchmarks-6.png" class="plot-directive" src="_images/benchmarks-6.png" />
+</figure>
+<p>(<a class="reference download internal" download="" href="_downloads/c39dc98b9c8fd428ba0a486141c204d3/benchmarks-7.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="_downloads/4dab9031ab3b055f4dcd76077776c71b/benchmarks-7.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="_downloads/5c09f085df335a82170edeada61ec2bf/benchmarks-7.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="_downloads/3fb6fdf8cc607cea880afdf11287f39b/benchmarks-7.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="_images/benchmarks-7.png" class="plot-directive" src="_images/benchmarks-7.png" />
+</figure>
+<p>(<a class="reference download internal" download="" href="_downloads/720727561f4fe9a4930982a66358747c/benchmarks-8.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="_downloads/2c17a442ab1d252a5b35c88c9108e9e2/benchmarks-8.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="_downloads/bd59ca4f2ec1758034cabc87b042f20d/benchmarks-8.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="_downloads/c75f06777459c1a13303001045743eaa/benchmarks-8.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="_images/benchmarks-8.png" class="plot-directive" src="_images/benchmarks-8.png" />
+</figure>
+<p>(<a class="reference download internal" download="" href="_downloads/59324fefb79441b63c63c8ebc7060b37/benchmarks-9.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="_downloads/052004a35a37b2c75203c59a56ab8e0d/benchmarks-9.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="_downloads/2e99f9d80642767d510cffdd1701f5b7/benchmarks-9.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="_downloads/4538733797770bb5d6f6eaac7da42467/benchmarks-9.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="_images/benchmarks-9.png" class="plot-directive" src="_images/benchmarks-9.png" />
+</figure>
+<p>(<a class="reference download internal" download="" href="_downloads/647fa7db04fa06d50a12e091f31a042c/benchmarks-10.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="_downloads/5b958d0db77f5215611d71a0fe47a335/benchmarks-10.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="_downloads/6af5b48b467129d714d1f4f0c7fe97cc/benchmarks-10.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="_downloads/981a72644a124bbd8a4129bdf6fa25a4/benchmarks-10.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="_images/benchmarks-10.png" class="plot-directive" src="_images/benchmarks-10.png" />
+</figure>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/favicon.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Benchmarks</a><ul>
+<li><a class="reference internal" href="#test-setup">Test setup</a><ul>
+<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#x64-python-results">x64 Python results</a><ul>
+<li><a class="reference internal" href="#graphical-results">Graphical results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="examples.html"
+                          title="previous chapter">Examples</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="gui.html"
+                          title="next chapter">GUI</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/benchmarks.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="gui.html" title="GUI"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="examples.html" title="Examples"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">HME_DataAnalyzer_Yiwen &#34;1.0&#34; documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Benchmarks</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024, Yiwen Sun.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

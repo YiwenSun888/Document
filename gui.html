@@ -1,0 +1,703 @@
+
+
+<!doctype html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>GUI &#8212; HME_DataAnalyzer_Yiwen &#34;1.0&#34; documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css?v=532c1bf3" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css?v=7f9a90b1" />
+    
+    <script src="_static/documentation_options.js?v=21637f4b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Functions manager view" href="functions_manager.html" />
+    <link rel="prev" title="Benchmarks" href="benchmarks.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="functions_manager.html" title="Functions manager view"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="benchmarks.html" title="Benchmarks"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">HME_DataAnalyzer_Yiwen &#34;1.0&#34; documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">GUI</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <style> .red {color:red} </style>
+<style> .blue {color:blue} </style>
+<style> .green {color:green} </style>
+<style> .cyan {color:cyan} </style>
+<style> .magenta {color:magenta} </style>
+<style> .orange {color:orange} </style>
+<style> .brown {color:brown} </style><section id="gui">
+<span id="id1"></span><h1>GUI<a class="headerlink" href="#gui" title="Link to this heading">¶</a></h1>
+<p>With the GUI tool you can</p>
+<ul class="simple">
+<li><p>visualize channels</p></li>
+<li><p>compare channels from multiple files in the same plot</p></li>
+<li><p>see channel, conversion and source metadata as stored in the MDF file</p></li>
+<li><p>access library functionality for single files (convert, export, cut, filter, resample, scramble) and multiple files (concatenate, stack)</p></li>
+</ul>
+<p>The following dependencies are required by the GUI</p>
+<ul class="simple">
+<li><p>PyQt5</p></li>
+<li><p>pyqtgraph</p></li>
+</ul>
+<section id="general-shortcuts">
+<h2>General shortcuts<a class="headerlink" href="#general-shortcuts" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Shortcut</p></th>
+<th class="head"><p>Action</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>F1</p></td>
+<td><p>Help</p></td>
+<td><p>Opens this online help page</p></td>
+</tr>
+<tr class="row-odd"><td><p>F2</p></td>
+<td><p>Create plot</p></td>
+<td><p>Create a new Plot window using the checked channels from the selection tree</p></td>
+</tr>
+<tr class="row-even"><td><p>F3</p></td>
+<td><p>Create numeric</p></td>
+<td><p>Create a new Numeric window using the checked channels from the selection tree</p></td>
+</tr>
+<tr class="row-odd"><td><p>F4</p></td>
+<td><p>Create tabular</p></td>
+<td><p>Create a new Tabular window using the checked channels from the selection tree</p></td>
+</tr>
+<tr class="row-even"><td><p>F11</p></td>
+<td><p>Toggle fullscreen</p></td>
+<td><p>In the single files mode will display the current opened file in full screen</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ctrl+O</p></td>
+<td><p>Open file(s)</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="menu">
+<h2>Menu<a class="headerlink" href="#menu" title="Link to this heading">¶</a></h2>
+<section id="file">
+<h3>File<a class="headerlink" href="#file" title="Link to this heading">¶</a></h3>
+<p>The first menu command is <em>Open</em>. Depending on the mode this allows to open files individually or for batch processing.</p>
+<p>The second menu command is <em>Open folder</em>. If this is selected then, starting with the selected root folder, all sub-folders are
+searched recursively for MDF files.</p>
+<p>Once a file has been opened, the user can load or save a display configuration using the <em>Open configuration</em> and <em>Save configuration</em>
+menu items.</p>
+</section>
+<section id="mode">
+<h3>Mode<a class="headerlink" href="#mode" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><em>Single files</em> : files are opened individually</p></li>
+<li><p><em>Batch processing</em> : allows processing multiple files</p></li>
+<li><p><em>Comparison</em> : show channels from all the opened files</p></li>
+</ul>
+</section>
+<section id="settings">
+<h3>Settings<a class="headerlink" href="#settings" title="Link to this heading">¶</a></h3>
+<p>The following settings are available</p>
+<ul>
+<li><p><strong>Sub-windows</strong>: controls if multiple subplots will be created when the plot button is pressed</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Disabled</span></code>: a single plot is used that is overwritten</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Enabled</span></code>: a new subplot is added</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Link sub-windows X-axis</strong>: controls the subplots are linked on the X axis (zooming will affect all sub-windows)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Disabled</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Enabled</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Ignore value2text conversions</strong>: do not apply the value to text conversions</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Disabled</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Enabled</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Plot background</strong>: switch plot background color (does not affect existing plots)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Black</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">White</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Plot X axis</strong>: select how the X axis will be displayed</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">seconds</span></code></dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code> : values will be formatted as hours, minutes and seconds</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">date</span></code> : the values will use the measurement start datetime</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Theme</strong>: switch application theme</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Dark</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Light</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Step mode</strong>: controls how the signal samples are interconnected visually in the Plot</p></li>
+<li><p><strong>Integer interpolation</strong>: selects the way integer channels are interpolated</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">-</span> <span class="pre">repeat</span> <span class="pre">previous</span> <span class="pre">sample</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">-</span> <span class="pre">linear</span> <span class="pre">interpolation</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">-</span> <span class="pre">hybrid</span> <span class="pre">interpolation</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Float interpolation</strong>: selects the way float channels are interpolated</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">-</span> <span class="pre">repeat</span> <span class="pre">previous</span> <span class="pre">sample</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">-</span> <span class="pre">linear</span> <span class="pre">interpolation</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>The settings are saved and restored each time the GUI is started.</p>
+</section>
+<section id="plot">
+<h3>Plot<a class="headerlink" href="#plot" title="Link to this heading">¶</a></h3>
+<p>There are several keyboard shortcuts for handling the plots:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Shortcut</p></th>
+<th class="head"><p>Action</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>C</p></td>
+<td><p>Edit signal color</p></td>
+<td><p>Opens a dialog to select the signal color <a href="#id15"><span class="problematic" id="id2">[7]_</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>F</p></td>
+<td><p>Fit all</p></td>
+<td><p>Y-axis fit all active channels on the screen, keeping the current X-axis range</p></td>
+</tr>
+<tr class="row-even"><td><p>Shift+F</p></td>
+<td><p>Fit selected</p></td>
+<td><p>Y-axis fit all active selected channels on the screen; unselected channels are not fitted</p></td>
+</tr>
+<tr class="row-odd"><td><p>G</p></td>
+<td><p>Grid</p></td>
+<td><p>Toggle grid lines</p></td>
+</tr>
+<tr class="row-even"><td><p>W</p></td>
+<td><p>Home</p></td>
+<td><p>Whole signals XY-axis fit</p></td>
+</tr>
+<tr class="row-odd"><td><p>H</p></td>
+<td><p>Honeywell</p></td>
+<td><p>zomm in on the current cursor position using a constant zoom level of 0.1s/cm (real display width)</p></td>
+</tr>
+<tr class="row-even"><td><p>I</p></td>
+<td><p>Zoom-in</p></td>
+<td><p>X-axis zoom-in <a href="#id16"><span class="problematic" id="id3">[1]_</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>O</p></td>
+<td><p>Zoom-out</p></td>
+<td><p>X-axis zoom-out <a href="#id17"><span class="problematic" id="id4">[1]_</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>X</p></td>
+<td><p>Zoom to range</p></td>
+<td><p>If the region is enabled, it will zoom to it</p></td>
+</tr>
+<tr class="row-odd"><td><p>M</p></td>
+<td><p>Statistics</p></td>
+<td><p>Toggle the display of the statistic panel</p></td>
+</tr>
+<tr class="row-even"><td><p>R</p></td>
+<td><p>Range</p></td>
+<td><p>Display a movable range that will trigger the display of the delta values for all plot channels <a href="#id18"><span class="problematic" id="id5">[2]_</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>S</p></td>
+<td><p>Stack all</p></td>
+<td><p>Y Stack all active channels so that they don’t overlap, keeping the X-axis range</p></td>
+</tr>
+<tr class="row-even"><td><p>Shift+S</p></td>
+<td><p>Stack selected</p></td>
+<td><p>Y Stack all active selected channels so that they don’t overlap; unselected channels are not stacked</p></td>
+</tr>
+<tr class="row-odd"><td><p>Y</p></td>
+<td><p>Lock/unlock region</p></td>
+<td><p>Lock or unlock the left margin of the region</p></td>
+</tr>
+<tr class="row-even"><td><p>.</p></td>
+<td><p>Toggle dots</p></td>
+<td><p>Toggle the display of signal samples (using dots affects performance)</p></td>
+</tr>
+<tr class="row-odd"><td><p>←</p></td>
+<td><p>Move cursor left</p></td>
+<td><p>Moves the cursor to the next sample on the left</p></td>
+</tr>
+<tr class="row-even"><td><p>→</p></td>
+<td><p>Move cursor right</p></td>
+<td><p>Moves the cursor to the next sample on the right</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ins</p></td>
+<td><p>Insert computation</p></td>
+<td><p>Insert new channel in the plot using functions and operations</p></td>
+</tr>
+<tr class="row-even"><td><p>F11</p></td>
+<td><p>Toggle full screen</p></td>
+<td><p>In the single files mode will display the current opened file in full screen</p></td>
+</tr>
+<tr class="row-odd"><td><p>Alt+I</p></td>
+<td><p>Toggle trigger texts</p></td>
+<td><p>Toggle the text boxes for the triggers <a href="#id19"><span class="problematic" id="id6">[6]_</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Alt+R</p></td>
+<td><p>Raw samples</p></td>
+<td><p>Toggle raw samples mode for the selected channels <a href="#id20"><span class="problematic" id="id7">[6]_</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Alt+S</p></td>
+<td><p>Scaled samples</p></td>
+<td><p>Toggle scaled (physical) samples mode for the selected channels</p></td>
+</tr>
+<tr class="row-even"><td><p>Ctrl+B</p></td>
+<td><p>Bin</p></td>
+<td><p>Toggle binary representation of integer channels</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ctrl+H</p></td>
+<td><p>Hex</p></td>
+<td><p>Toggle hex representation of integer channels</p></td>
+</tr>
+<tr class="row-even"><td><p>Ctrl+I</p></td>
+<td><p>Insert cursor comment</p></td>
+<td><p>Insert a visual vertical line and comment at the current cursor position <a href="#id21"><span class="problematic" id="id8">[6]_</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Ctrl+P</p></td>
+<td><p>Physical</p></td>
+<td><p>Toggle physical representation of integer channels</p></td>
+</tr>
+<tr class="row-even"><td><p>Ctrl+R</p></td>
+<td><p>Edit color ranges</p></td>
+<td><p>Opens a dialog to edit the channel or channel group color ranges <a href="#id22"><span class="problematic" id="id9">[7]_</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Ctrl+G</p></td>
+<td><p>Edit Y axis scaling</p></td>
+<td><p>Opens a dialog to visually edit the Y axis ranges acoording to the expected signal values <a href="#id23"><span class="problematic" id="id10">[7]_</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Ctrl+S</p></td>
+<td><p>Save plot channels</p></td>
+<td><p>Save channels from current active subplot in a new MF4 file</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ctrl+Shift+S</p></td>
+<td><p>Save all channels</p></td>
+<td><p>Save all channels from all sub-windows in a new MF4 file</p></td>
+</tr>
+<tr class="row-even"><td><p>Shift+C</p></td>
+<td><p>Cascade sub-windows</p></td>
+<td><p>Cascade the sub plots</p></td>
+</tr>
+<tr class="row-odd"><td><p>Shift+Alt+F</p></td>
+<td><p>Toggle frames</p></td>
+<td><p>Will toggle the sub plots MDI window frames</p></td>
+</tr>
+<tr class="row-even"><td><p>Shift+L</p></td>
+<td><p>Toggle channel list</p></td>
+<td><p>Will toggle the channel tree for the current opened file</p></td>
+</tr>
+<tr class="row-odd"><td><p>Shift+T</p></td>
+<td><p>Tile sub-windows</p></td>
+<td><p>Tiles sub-windows in a grid</p></td>
+</tr>
+<tr class="row-even"><td><p>Shift+V</p></td>
+<td><p>Tile vertically</p></td>
+<td><p>Tiles sub-windows vertically <a href="#id24"><span class="problematic" id="id11">[3]_</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Shift+H</p></td>
+<td><p>Tile horizontally</p></td>
+<td><p>Tiles sub-windows horizontally <a href="#id25"><span class="problematic" id="id12">[3]_</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Shift+←</p></td>
+<td><p>Shift channels left</p></td>
+<td><p>Shifts the selected channels to the left in the time domain</p></td>
+</tr>
+<tr class="row-odd"><td><p>Shift+→</p></td>
+<td><p>Shift channels right</p></td>
+<td><p>Shifts the selected channels to the right in the time domain</p></td>
+</tr>
+<tr class="row-even"><td><p>Shift+↑</p></td>
+<td><p>Shift channels up</p></td>
+<td><p>Shifts the selected channels to the up</p></td>
+</tr>
+<tr class="row-odd"><td><p>Shift+↓</p></td>
+<td><p>Shift channels down</p></td>
+<td><p>Shifts the selected channels to the down</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="single-files">
+<h2>Single files<a class="headerlink" href="#single-files" title="Link to this heading">¶</a></h2>
+<p>The <em>Single files</em> page is used to open several files individually for visualization and processing (for example exporting to csv or hdf5).</p>
+<section id="layout-elements">
+<h3>Layout elements<a class="headerlink" href="#layout-elements" title="Link to this heading">¶</a></h3>
+<img alt="_images/single_files.png" src="_images/single_files.png" />
+<ol class="arabic simple">
+<li><p>Opened files tabs</p></li>
+<li><p>Channel tree display mode</p></li>
+<li><p>Complete channels tree</p></li>
+<li><p>Command buttons</p></li>
+<li><p>Windows area</p></li>
+<li><p>Numeric window</p></li>
+<li><p>Plot window</p></li>
+<li><p>Tabular window</p></li>
+<li><p>File operations</p></li>
+</ol>
+<section id="opened-files-tabs">
+<h4>1. Opened files tabs<a class="headerlink" href="#opened-files-tabs" title="Link to this heading">¶</a></h4>
+<p>In the single files mode, you can open multiple files in parallel. The tab names have the title set to the short file name, and the complete file path can be seen as
+the tab tool-tip.</p>
+<p>There is no restriction, so the same file can be opened several times.</p>
+</section>
+<section id="channel-tree-display-mode">
+<h4>2. Channel tree display mode<a class="headerlink" href="#channel-tree-display-mode" title="Link to this heading">¶</a></h4>
+<p>The channel tree can be displayed in three ways</p>
+<ul class="simple">
+<li><p>as a naturally sorted list</p></li>
+<li><p>grouped using the internal file structure</p></li>
+<li><p>only the selected channels</p></li>
+</ul>
+</section>
+<section id="complete-channels-tree">
+<h4>3. Complete channels tree<a class="headerlink" href="#complete-channels-tree" title="Link to this heading">¶</a></h4>
+<p>This tree contains all the channels found in the measurement.</p>
+<p>Double clicking a channel name will display a pop-up window with the channel information (CNBLOCK, CCBLOCK and SIBLOCK/CEBLOCK)</p>
+<img alt="_images/channel_info.png" src="_images/channel_info.png" />
+<p>Only the channels that are checked in the channels tree will be selected for plotting when the <em>Create window</em> button is pressed.
+Checking or unchecking channels will not affect the current plot or sub-windows.</p>
+</section>
+<section id="command-buttons">
+<h4>4. Command buttons<a class="headerlink" href="#command-buttons" title="Link to this heading">¶</a></h4>
+<p>From left to right the buttons have the following functionality</p>
+<ul>
+<li><p><strong>Load configuration</strong>: restores channels tree and all sub-plot windows from a saved configuration file</p></li>
+<li><p><strong>Save configuration</strong>: saves all sub-windows (channels, colors, common axis and enable state) and channel tree</p></li>
+<li><p><strong>Select all channels</strong>: checks all channels in the channels tree</p></li>
+<li><p><strong>Reset selection</strong>: unchecks all channels in the channels tree</p></li>
+<li><p><strong>Advanced search &amp; select</strong>: will open an advanced search dialog</p>
+<blockquote>
+<div><blockquote>
+<div><ul class="simple">
+<li><p>the dialog can use wildcard and regex patterns</p></li>
+<li><p>multiple channels can be selected, and thus checked in the channels tree</p></li>
+<li><p>in the “Pattern based window” tab the user can define a pattern that will be used to filter out the channels from the
+measurement file, and as a second filtering step some condition can be used based on the channels values. This information
+will be saved in the window configuration. The pattern based windows can be easily recognized by the title bar icon</p></li>
+<li><p>the keyboard shortcut <code class="docutils literal notranslate"><span class="pre">Ctrl+F</span></code> can also be used to bring up the search dialog</p></li>
+</ul>
+</div></blockquote>
+<img alt="_images/advanced_search.png" src="_images/advanced_search.png" />
+</div></blockquote>
+</li>
+<li><p><strong>Create window</strong>: generates a new window (Numeric, Plot, Tabular, GPS, CAN/LIN/FlexRay Bus Trace) based on the current checked channels from the channels tree.
+If sub-windows are disabled in the settings then the current window is replaced by the new plot.
+If sub-windows are enabled then a new sub-plot will be added, and the already existing sub-windows will not be affected.
+The same channel can be used in multiple sub-windows.</p></li>
+</ul>
+</section>
+<section id="windows-area">
+<h4>5. Windows area<a class="headerlink" href="#windows-area" title="Link to this heading">¶</a></h4>
+<p>If sub-windows are enabled then multiple plots can be used. The sub-windows can be re-arranged using drag &amp; drop.</p>
+</section>
+<section id="numeric-window">
+<h4>6. Numeric window<a class="headerlink" href="#numeric-window" title="Link to this heading">¶</a></h4>
+<p>Numeric windows can handle a lot more channels than plot windows. You can use
+a numeric window to see the channel values at certain time stamps, and to search for certain channel values.</p>
+<img alt="_images/numeric.png" src="_images/numeric.png" />
+<ol class="arabic simple">
+<li><p>display area: here we can see the instantaneous signal values. The raw and scaled values are shown for each signal.
+Double clicking a column header will toggle the sorting on that column.</p></li>
+<li><p>integer format: choose between physical, hex and binary format.</p></li>
+<li><p>float decimals: choose the precision used for float display</p></li>
+<li><p>timestamp selection: use the input box or the slider to adjust the timestamp</p></li>
+<li><p>signal values search mode: choose between raw and scaled signal samples when searching for a certain value</p></li>
+<li><p>signal name pattern: use a wildcard pattern to select the signals that will be used for value searching</p></li>
+<li><p>operator: operator that will be used for the search</p></li>
+<li><p>target value: search target value</p></li>
+<li><p>direction: timebase direction for searching the values</p></li>
+</ol>
+<p>Double clicking a row will bring up the range editor for associated signal.</p>
+<img alt="_images/numeric_range_editor.gif" src="_images/numeric_range_editor.gif" />
+</section>
+<section id="plot-window">
+<h4>7. Plot window<a class="headerlink" href="#plot-window" title="Link to this heading">¶</a></h4>
+<p>Plot windows are used to graphically display the channel samples.</p>
+<img alt="_images/plot.png" src="_images/plot.png" />
+<p><cite>pyqtgraph</cite> is used for the plots; to get the best performance consider the following tips.</p>
+<ul class="simple">
+<li><p>limit the number of channels: plotting hundreds of channels can get really slow</p></li>
+<li><p>disabling dots will make the plots a lot more responsive</p></li>
+</ul>
+<p>The Plot window has three section
+1. signal selection tree
+2. graphical area
+3. signal statistics panel (toggled using the <code class="docutils literal notranslate"><span class="pre">M</span></code> keyboard shortcut)</p>
+<p>Each signal item from the signal selection tree has five elements</p>
+<ol class="arabic simple">
+<li><p>display enable checkbox</p></li>
+<li><p>color select button</p></li>
+<li><p>channel name and unit label</p></li>
+<li><p>channel value label <a href="#id26"><span class="problematic" id="id13">[4]_</span></a></p></li>
+<li><p>common axis checkbox</p></li>
+<li><p>individual axis checkbox <a href="#id27"><span class="problematic" id="id14">[5]_</span></a></p></li>
+</ol>
+<p>The user can also create channel groups in the selection tree. Simple channel groups are only used for grouping signals. Pattern based channel groups
+can be used to filter signals based on the name or samples values.</p>
+<p>The selection tree has an extended context menu accessible using the right mouse click.</p>
+<p>Double clicking an item will open a range editor dialog, similar to the Numeric window range editor.</p>
+<p>The initial graphics are view will have all the signal homed-in (see the <em>H</em> keyboard shortcut). The user is free to use the mouse to interact with the graphics area (zoom, pan).</p>
+<p>The cursor is toggled using the <em>C</em> keyboard shortcut, and with it the channel values will be displayed for each item in the <em>Selected channels list</em>.
+The cursor can also be invoked by clicking the plot area.</p>
+<p>Using the <em>R</em> keyboard shortcut will toggle the range, and with it the channel values will be displayed for each item in the <em>Selected channels list</em>. When the range is
+enabled, using the <em>H</em> keyboard shortcut will not home to the whole time range, but instead will use the range time interval.</p>
+<p>The <em>Ctrl+H</em>, <em>Ctrl+B</em> and <em>Ctrl+P</em> keyboard shortcuts will</p>
+<ul class="simple">
+<li><p>change the axis values for integer channels to hex, bin or physical mode</p></li>
+<li><p>change the channel value display mode for each integer channel item in the <em>Signal selection tree</em></p></li>
+</ul>
+<p>The <em>Alt+R</em> and <em>Alt+S</em> keyboard shortcuts will switch between the raw and scaled signal samples.</p>
+<p>Each vertical axis width can be modified using the + and - buttons.</p>
+<img alt="_images/plot.gif" src="_images/plot.gif" />
+<p>You can insert new computed channels by pressing the <em>insert</em> key. This will allow either to compute basic operations using the plot channels, to
+apply a function on one of the plot channels, or to specify a simple expression than uses multiple signals from the Plot window.</p>
+<img alt="_images/compute_channel_dialog.png" src="_images/compute_channel_dialog.png" />
+<p>The currently active plot’s channels can be saved to a new file by pressing <em>Ctrl+S</em>.
+The channels from all sub-windows can be saved to a new file by pressing <em>Ctrl+Shift+S</em>.</p>
+<p>The sub-windows can be tiled as a grid, vertically or horizontally (see the keyboard shortcuts).</p>
+</section>
+<section id="tabular-window">
+<h4>8. Tabular window<a class="headerlink" href="#tabular-window" title="Link to this heading">¶</a></h4>
+<p>The tabular window is very similar to an Excel/CSV sheet.
+The most powerful feature of this window is that multiple filters can be defined for the signals values.</p>
+<img alt="_images/tabular1.png" src="_images/tabular1.png" />
+<img alt="_images/tabular2.png" src="_images/tabular2.png" />
+<p>The tabular window has the following elements:</p>
+<ol class="arabic simple">
+<li><p>display area: here we can see the signal values. The raw and scaled values are shown for each signal.
+Right clicking a column header will show a pop-up window for controlling the sorting, defining signal ranges and
+adjusting the columns width.</p></li>
+<li><p>integer format: choose between physical, hex and binary format.</p></li>
+<li><p>float decimals: choose the precision used for float display</p></li>
+<li><p>timestamp format: use the input box or the slider to adjust the timestamp display as float value or as
+datetime value</p></li>
+<li><p>remove prefix: remove column names prefix; avoids unnecessary large column widths</p></li>
+<li><p>toggle filters view: toggle the visibility of the filters (better vertical space if filters are not used)</p></li>
+<li><p>filter enable</p></li>
+<li><p>filter logical relation</p></li>
+<li><p>filtering signal</p></li>
+<li><p>filter operator</p></li>
+<li><p>target value for filtering</p></li>
+<li><p>apply filters: the actual filtering is done only after pressing the button.
+The user can modify the existing filters without changing the tabular view.</p></li>
+<li><p>query: the Tabular window used a pandas dataframe as backend. The filtering is
+done by performing a query on the dataframe.</p></li>
+</ol>
+</section>
+<section id="file-operations">
+<h4>9. File operations<a class="headerlink" href="#file-operations" title="Link to this heading">¶</a></h4>
+<p>There are five aspects related to the measurement file that can be accessed using the tabs:</p>
+<ol class="arabic simple">
+<li><p>channels: here the user can visualize the signals using the available window types</p></li>
+<li><p>modify &amp; export: this tab contains the tools needed for processing the measurement file.
+The use can filter signals, cut and resample the measurement, or export it to other file formats.</p></li>
+<li><p>bus logging: this tab is only visible for the measurements that contain CAN or LIN bus logging.
+The user can decode the raw bus logging using database files (.dbc, .ldf, .arxml)</p></li>
+<li><p>attachments: this tab is only visible if the measurement contains attachments.
+The user can extract the attachment and save it to a new file.</p></li>
+<li><p>info: this tab contains an overview of the measurement file content (channel groups, file header comments, total number of channels)</p></li>
+</ol>
+</section>
+<section id="can-lin-flexray-bus-trace">
+<h4>10. CAN/LIN/FlexRay Bus Trace<a class="headerlink" href="#can-lin-flexray-bus-trace" title="Link to this heading">¶</a></h4>
+<p>This window types can only be created by pressing the <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">window</span></code> button. If the measurement
+does not contain bus logging of the selected kind, then no window will be generated.</p>
+<p>The filtering and signal ranges definition is done similar to the Tabular window.</p>
+</section>
+<section id="drag-drop">
+<h4>11. Drag &amp; Drop<a class="headerlink" href="#drag-drop" title="Link to this heading">¶</a></h4>
+<p>Channels can be dragged and dropped between sub-windows for easier configuration. Drag and drop in the free MDI can be used to create new windows.</p>
+<img alt="_images/drag_and_drop.gif" src="_images/drag_and_drop.gif" />
+</section>
+</section>
+</section>
+<section id="batch-processing">
+<h2>Batch processing<a class="headerlink" href="#batch-processing" title="Link to this heading">¶</a></h2>
+<p>The <em>Batch processing</em> view is used to concatenate or stack multiple files, or to perform the same processing steps on multiple files.
+Keep in mind that the order of the input files is always preserved, only the samples timestamps are influenced by the <code class="docutils literal notranslate"><span class="pre">Sync</span> <span class="pre">using</span> <span class="pre">measurements</span> <span class="pre">timestamps</span></code> checkbox.</p>
+<img alt="_images/multiple_files.png" src="_images/multiple_files.png" />
+<ol class="arabic">
+<li><p>file list</p></li>
+<li><p>file list sorting buttons</p></li>
+<li><p>batch operations</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>concatenate requires input files with matching internal structure (same number of channel groups and the same set of channels in each n-th group). Each signal in the output file
+will be the result of concatenation of the samples from the input files</p></li>
+<li><p>modify &amp; export: similar to the single files view</p></li>
+<li><p>stack will create a single measurement that will contain all the channel groups from the input files. Identically named channels will not be concatenated, they will just appear
+multiple times in the output file</p></li>
+<li><p>bus logging: similar to the single files view</p></li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+<p>The files list can be rearranged in the list (1) by drag and dropping lines. Unwanted files can be deleted by
+selecting them and pressing the <em>DEL</em> key. The files order is considered from top to bottom.</p>
+</section>
+<section id="comparison">
+<h2>Comparison<a class="headerlink" href="#comparison" title="Link to this heading">¶</a></h2>
+<p>Use <em>CTRL+F</em> to search channels from all the opened files. The channel names are prefixed
+with the measurement index.</p>
+<p class="rubric">Footnotes</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/favicon.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">GUI</a><ul>
+<li><a class="reference internal" href="#general-shortcuts">General shortcuts</a></li>
+<li><a class="reference internal" href="#menu">Menu</a><ul>
+<li><a class="reference internal" href="#file">File</a></li>
+<li><a class="reference internal" href="#mode">Mode</a></li>
+<li><a class="reference internal" href="#settings">Settings</a></li>
+<li><a class="reference internal" href="#plot">Plot</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#single-files">Single files</a><ul>
+<li><a class="reference internal" href="#layout-elements">Layout elements</a><ul>
+<li><a class="reference internal" href="#opened-files-tabs">1. Opened files tabs</a></li>
+<li><a class="reference internal" href="#channel-tree-display-mode">2. Channel tree display mode</a></li>
+<li><a class="reference internal" href="#complete-channels-tree">3. Complete channels tree</a></li>
+<li><a class="reference internal" href="#command-buttons">4. Command buttons</a></li>
+<li><a class="reference internal" href="#windows-area">5. Windows area</a></li>
+<li><a class="reference internal" href="#numeric-window">6. Numeric window</a></li>
+<li><a class="reference internal" href="#plot-window">7. Plot window</a></li>
+<li><a class="reference internal" href="#tabular-window">8. Tabular window</a></li>
+<li><a class="reference internal" href="#file-operations">9. File operations</a></li>
+<li><a class="reference internal" href="#can-lin-flexray-bus-trace">10. CAN/LIN/FlexRay Bus Trace</a></li>
+<li><a class="reference internal" href="#drag-drop">11. Drag &amp; Drop</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#batch-processing">Batch processing</a></li>
+<li><a class="reference internal" href="#comparison">Comparison</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="benchmarks.html"
+                          title="previous chapter">Benchmarks</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="functions_manager.html"
+                          title="next chapter">Functions manager view</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/gui.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="functions_manager.html" title="Functions manager view"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="benchmarks.html" title="Benchmarks"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">HME_DataAnalyzer_Yiwen &#34;1.0&#34; documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">GUI</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024, Yiwen Sun.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

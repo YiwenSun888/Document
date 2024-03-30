@@ -1,0 +1,388 @@
+
+
+<!doctype html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Functions manager view &#8212; HME_DataAnalyzer_Yiwen &#34;1.0&#34; documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css?v=532c1bf3" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css?v=7f9a90b1" />
+    
+    <script src="_static/documentation_options.js?v=21637f4b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="GUI" href="gui.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="gui.html" title="GUI"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">HME_DataAnalyzer_Yiwen &#34;1.0&#34; documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Functions manager view</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="functions-manager-view">
+<span id="functions-manager"></span><h1>Functions manager view<a class="headerlink" href="#functions-manager-view" title="Link to this heading">¶</a></h1>
+<p>Virtual channels (computed channels) can be defined in the Plot windows. The user will
+define the functions used for the virtual channels using Python language syntax; the extra rules will be described lower. After this the user
+can insert virtual channels in the Plot window (keyboard shortcut <code class="docutils literal notranslate"><span class="pre">Ins</span></code>) and will map an existing function to the virtual channel, as well as
+a list of alternative channel names (ASAPs) for each function argument.</p>
+<section id="function-manager-dialog">
+<h2>Function manager dialog<a class="headerlink" href="#function-manager-dialog" title="Link to this heading">¶</a></h2>
+<p>The user defined functions are associated with the display file. This means that there will be separate function managers for
+each opened measurement file. When a display file (.dspf) is saved by the user it will also contain the associated user defined functions.
+The functions manager dialog can be invoked using the keyboard shortcut <code class="docutils literal notranslate"><span class="pre">F6</span></code>.</p>
+<img alt="_images/functions_manager_dialog.png" src="_images/functions_manager_dialog.png" />
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Add</span></code></p></td>
+<td><p>Adds a new function</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Delete</span> <span class="pre">all</span></code></p></td>
+<td><p>Deletes all the defined functions</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Load</span> <span class="pre">definitions</span></code></p></td>
+<td><p>Imports definitions found in <code class="docutils literal notranslate"><span class="pre">.def</span></code> files</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">definitions</span></code></p></td>
+<td><p>Saves all the define function to a new file with the extension <code class="docutils literal notranslate"><span class="pre">.def</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Function</span> <span class="pre">definition</span></code></p></td>
+<td><p>Python language function definition</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Check</span> <span class="pre">syntax</span></code></p></td>
+<td><p>Check if the current function definition syntax is valid</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Store</span> <span class="pre">function</span> <span class="pre">changes</span></code></p></td>
+<td><p>Updates the definition after the user has made changes. If this is not pressed
+and the user switches to another function then the changes will be lost.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Apply</span></code></p></td>
+<td><p>Accept all the changes made by the user</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Cancel</span></code></p></td>
+<td><p>Rejects all the changes made by the user</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="python-function-rules">
+<h2>Python function rules<a class="headerlink" href="#python-function-rules" title="Link to this heading">¶</a></h2>
+<p>The user defines the functions using Python syntax; this means that the function definition must be valid in Python code.</p>
+<p>Further more the following rules and restrictions must be followed:</p>
+<blockquote>
+<div><ul>
+<li><p>all function arguments must have default numeric values: this means that the definition <cite>def Function1(a, b, t=0)</cite> is not
+accepted, instead the user must provide default values such as <cite>def Function1(a=1.5, b=0, t=0)</cite></p></li>
+<li><p>the last argument must be <code class="docutils literal notranslate"><span class="pre">t=0</span></code>: the argument <cite>t</cite> is reserved for the time stamp and must not be otherwise used by the user.
+This means that the definition <cite>def Function1(a=1.5, b=0)</cite> is not valid, instead the user can write something like this
+<cite>def Function1(a=1.5, b=0, t=0)</cite></p></li>
+<li><p>always return numeric values on all the branches: Python functions automatically return <cite>None</cite> if no <cite>return</cite> is explicitly
+written. The user must take care that all possible code braces return numeric values.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;this function will produce errors because not all branches have explicit return statements with numeric values&quot;</span>
+<span class="k">def</span> <span class="nf">Function1</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+<span class="s2">&quot;this function will produce errors because it returns non-numeric values&quot;</span>
+<span class="k">def</span> <span class="nf">Function1</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Activated&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Disabled&quot;</span>
+
+<span class="s2">&quot;this function is OK because it has explicit return statements with numeric values&quot;</span>
+<span class="k">def</span> <span class="nf">Function1</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>the modules <cite>math</cite>, <cite>pandas</cite> and <cite>numpy</cite> are available inside the function as <cite>math</cite>, <cite>pd</cite> and <cite>np</cite></p></li>
+<li><p>functions can be cross-referenced; one function can call another user defined function</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Function1</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+<span class="s2">&quot; Function2 can call Function 1&quot;</span>
+<span class="k">def</span> <span class="nf">Function2</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Function1</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">c</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</section>
+<section id="virtual-channel-dialog">
+<h2>Virtual channel dialog<a class="headerlink" href="#virtual-channel-dialog" title="Link to this heading">¶</a></h2>
+<p>Virtual channels can be added to Plot windows using the keyboard shortcut <code class="docutils literal notranslate"><span class="pre">Ins</span></code> (insert). The precondition for this is to
+have at least one function defined in the Functions manager.</p>
+<p>In the <cite>Define channel</cite> dialog window the user can select one of the available function, and then for each of the function’s
+arguments a list of alternative channel names can be filed by the user. The argument <cite>t=0</cite> is reserved for the time-stamp and is not
+shown in the dialog window. The alternative names must be placed on separate lines in the text field found next to the argument name.</p>
+<img alt="_images/virtual_channel_dialog.png" src="_images/virtual_channel_dialog.png" />
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Triggering</span></code></p></td>
+<td><p>the virtual channel samples will be calculated in the time stamps defined by the
+selected choice</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Computation</span> <span class="pre">mode</span></code></p></td>
+<td><p>the virtual channel can be computed passing the signal arguments samples by
+sample or passing the signal arguments directly as numpy ndarrays</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Function</span> <span class="pre">name</span></code></p></td>
+<td><p>select one of the available functions</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Function</span> <span class="pre">info</span></code></p></td>
+<td><p>displays the function definition code</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Arguments</span></code></p></td>
+<td><p>alternative channel names for each argument. In the example argument <cite>b</cite> will
+use the first existing ASAP from the choices <cite>MAIN_CLOCK</cite> or <cite>MAIN_CLOCK_5MS</cite>.
+If no alternative exist in the measurement file then the argument’s default value
+will be used (see the function definition)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Argument</span> <span class="pre">search</span></code></p></td>
+<td><p>opens a search dialog were channel names cane be searched from the measurement
+file</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Computed</span> <span class="pre">channel</span> <span class="pre">name</span></code></p></td>
+<td><p>virtual channel name</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Computed</span> <span class="pre">channel</span> <span class="pre">comment</span></code></p></td>
+<td><p>virtual channel comment</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Computed</span> <span class="pre">channel</span> <span class="pre">unit</span></code></p></td>
+<td><p>virtual channel unit</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Function</span> <span class="pre">definition</span></code></p></td>
+<td><p>Python language function definition</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Check</span> <span class="pre">syntax</span></code></p></td>
+<td><p>Check if the current function definition syntax is valid</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Store</span> <span class="pre">function</span> <span class="pre">changes</span></code></p></td>
+<td><p>Updates the definition after the user has made changes. If this is not pressed
+and the user switches to another function then the changes will be lost.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Apply</span></code></p></td>
+<td><p>Accept the changes and inserts the new virtual channel</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cancel</span></code></p></td>
+<td><p>Rejects all the changes made by the user</p></td>
+</tr>
+</tbody>
+</table>
+<p>When the computation mode is set to <cite>sample by sample</cite> the following steps are executed:</p>
+<ul class="simple">
+<li><p>the signals linked to the arguments are searched in the measurement file</p></li>
+<li><p>using the signals found in the measurement, the union of all time stamps is computed (resulting an ndarray of length N)</p></li>
+<li><p>all found signals are interpolated using the union time base</p></li>
+<li><p>the function is called N times (once for each of the N time stamps) passing the signal value for the current time stamp and the time stamp (in the <cite>t</cite> argument).
+The missing linked signals will be replaced by the default value specified in the function definition</p></li>
+<li><p>the returned value are stored and finally the resulting Signal is constructed</p></li>
+</ul>
+<p>When the computation mode is set to <cite>complete signal</cite> the following steps are executed:</p>
+<ul class="simple">
+<li><p>the signals linked to the arguments are searched in the measurement file</p></li>
+<li><p>using the signals found in the measurement, the union of all time stamps is computed (resulting an ndarray of length N)</p></li>
+<li><p>all found signals are interpolated using the union time base</p></li>
+<li><p>the function is called only 1 time passing the complete signal ndarray’s and the union of the time stamps (in the <cite>t</cite> argument).
+The missing linked signals will be replaced by an ndarray of length N filled with the default value specified in the function definition</p></li>
+<li><p>the result Signal is constructed using the ndarray returned by the function</p></li>
+</ul>
+</section>
+<section id="example-functions">
+<h2>Example functions<a class="headerlink" href="#example-functions" title="Link to this heading">¶</a></h2>
+<section id="average-of-3-channels">
+<h3>Average of 3 channels<a class="headerlink" href="#average-of-3-channels" title="Link to this heading">¶</a></h3>
+<p>The same definition works for both <cite>sample by sample</cite> and <cite>complete signal</cite> computation modes</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="n">channel1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">channel2</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">channel3</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">channel1</span> <span class="o">+</span> <span class="n">channel2</span> <span class="o">+</span> <span class="n">channel3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</section>
+<section id="channel-clipping">
+<h3>Channel clipping<a class="headerlink" href="#channel-clipping" title="Link to this heading">¶</a></h3>
+<p>Using <cite>sample by sample</cite> computation mode</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clip</span><span class="p">(</span><span class="n">channel1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">channel1</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">100</span>
+    <span class="k">elif</span> <span class="n">channe1</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">channel1</span>
+</pre></div>
+</div>
+<p>Using <cite>complete signal</cite> computation mode</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clip</span><span class="p">(</span><span class="n">channel1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">cahnnel1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="grey-code-to-decimal">
+<h3>Grey code to decimal<a class="headerlink" href="#grey-code-to-decimal" title="Link to this heading">¶</a></h3>
+<p>The same definition works for both <cite>sample by sample</cite> and <cite>complete signal</cite> computation modes</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gray2dec</span><span class="p">(</span><span class="n">position_sensor_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+
+    <span class="k">for</span> <span class="n">shift</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">position_sensor_value</span> <span class="o">=</span> <span class="n">position_sensor_value</span> <span class="o">^</span> <span class="p">(</span><span class="n">position_sensor_value</span> <span class="o">&gt;&gt;</span> <span class="n">shift</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">position_sensor_value</span>
+</pre></div>
+</div>
+</section>
+<section id="maximum-of-3-channels">
+<h3>Maximum of 3 channels<a class="headerlink" href="#maximum-of-3-channels" title="Link to this heading">¶</a></h3>
+<p>Using <cite>sample by sample</cite> computation mode</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">channel1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">channel2</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">channel3</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">channel1</span><span class="p">,</span> <span class="n">channel2</span><span class="p">,</span> <span class="n">channel3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Using <cite>complete signal</cite> computation mode</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">channel1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">channel2</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">channel3</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="o">.</span><span class="n">reduce</span><span class="p">([</span><span class="n">channel1</span><span class="p">,</span> <span class="n">channel2</span><span class="p">,</span> <span class="n">channel3</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="rpm-to-rad-s">
+<h3>rpm to rad/s<a class="headerlink" href="#rpm-to-rad-s" title="Link to this heading">¶</a></h3>
+<p>The same definition works for both <cite>sample by sample</cite> and <cite>complete signal</cite> computation modes</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rpm_to_rad_per_second</span><span class="p">(</span><span class="n">speed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">speed</span> <span class="o">/</span> <span class="mi">60</span>
+</pre></div>
+</div>
+</section>
+<section id="gradient">
+<h3>gradient<a class="headerlink" href="#gradient" title="Link to this heading">¶</a></h3>
+<p>In the <cite>Define channel</cite> dialog the computation mode must be set to <cite>complete signal</cite></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rpm_to_rad_per_second</span><span class="p">(</span><span class="n">speed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">speed</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It is not possible to implement this function in the <cite>sample by sample</cite> mode because only the current samples are
+forwarded to the function.</p>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/favicon.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Functions manager view</a><ul>
+<li><a class="reference internal" href="#function-manager-dialog">Function manager dialog</a></li>
+<li><a class="reference internal" href="#python-function-rules">Python function rules</a></li>
+<li><a class="reference internal" href="#virtual-channel-dialog">Virtual channel dialog</a></li>
+<li><a class="reference internal" href="#example-functions">Example functions</a><ul>
+<li><a class="reference internal" href="#average-of-3-channels">Average of 3 channels</a></li>
+<li><a class="reference internal" href="#channel-clipping">Channel clipping</a></li>
+<li><a class="reference internal" href="#grey-code-to-decimal">Grey code to decimal</a></li>
+<li><a class="reference internal" href="#maximum-of-3-channels">Maximum of 3 channels</a></li>
+<li><a class="reference internal" href="#rpm-to-rad-s">rpm to rad/s</a></li>
+<li><a class="reference internal" href="#gradient">gradient</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="gui.html"
+                          title="previous chapter">GUI</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/functions_manager.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="gui.html" title="GUI"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">HME_DataAnalyzer_Yiwen &#34;1.0&#34; documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Functions manager view</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024, Yiwen Sun.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>
