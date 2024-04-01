@@ -28,3 +28,7 @@ python:
     - method: pip
       path: .
     - requirements: doc/requirements.txt
+    
+submodules:
+  include: all
+  recursive: true
