@@ -23,12 +23,15 @@ formats:
   - pdf
 
 # Optionally set the version of Python and requirements required to build your docs
+#python:
+ # install:
+   # - method: pip
+   #   path: .
+    #- requirements: doc/requirements.txt
 python:
   install:
-    - method: pip
-      path: .
-    - requirements: doc/requirements.txt
-    
+  - requirements: doc/requirements.txt
+  
 submodules:
   include: all
   recursive: true
