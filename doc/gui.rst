@@ -38,9 +38,9 @@ The following dependencies are required by the GUI
 
 Automation for data processing
 ==============================
-With this function you can process large parameter test and get the test report automatically after you import the test data correctly.
+With this function you can process both large parameter and Durability test and get the test report automatically after you import the test data correctly.
 
-Follow the next few step you can get the test report successfully:
+Follow the next few step you can get the functional test report successfully:
 
 1.import test data
 2.open the data processing panel
