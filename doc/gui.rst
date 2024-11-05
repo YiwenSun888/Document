@@ -87,6 +87,17 @@ Press the Run LPT button
 
 .. image:: images/ToExcel.png
 
+Follow the next few step you can get the Durability test report successfully:
+
+1.choose the proper project and bench type
+2.import test data path
+3.choose if you want to check all files and set interval cycles
+4.input basic test information and report name
+5.press Start Analyze button to set both report template path and output report path 
+
+1. choose the proper project and bench type
+^^^^^^^^^^^^^^^^^^^
+
 General shortcuts
 =================
 
