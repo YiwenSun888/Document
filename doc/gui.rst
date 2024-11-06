@@ -96,7 +96,35 @@ Follow the next few step you can get the Durability test report successfully:
 5.press Start Analyze button to set both report template path and output report path 
 
 1. choose the proper project and bench type
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: images/ForDurabilityFirst.png
+
+2. import test data path
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: images/ForDurabiltyDataPath1.png
+.. image:: images/ForDurabiltyDataPath2.png
+
+3. choose if you want to check all files and set interval cycles
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: images/ForDurabiltySetFileRange.png
+
+4.input basic test information and report name
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: images/ForDurabiltyInput.png
+
+5.press Start Analyze button to set both report template path and output report path 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: images/ForDurabiltyAnalyze1.png
+.. image:: images/ForDurabiltyAnalyze2.png
+.. image:: images/ForDurabiltyAnalyze3.png
+.. image:: images/ForDurabiltyAnalyze4.png
+.. image:: images/ForDurabiltyAnalyze5.png
+.. image:: images/ForDurabiltyAnalyze6.png
 
 General shortcuts
 =================
